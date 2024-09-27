@@ -1,0 +1,504 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Coolinglass/Applied-Machine-Learning-Projects/blob/master/Data_Structures_tasks_in_Python.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "id": "eecfdf96",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "eecfdf96",
+        "outputId": "7d9da6b8-1ef3-4345-9ed5-111ecb7d68cd"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[['Name', ['A', 'B', 'C', 'D', 'E']],\n",
+              " ['Ankit', [41, 34, 45, 55, 63]],\n",
+              " ['Aravind', [42, 23, 34, 44, 53]],\n",
+              " ['Lakshay', [32, 23, 13, 54, 67]],\n",
+              " ['Gyan', [23, 82, 23, 63, 34]],\n",
+              " ['Pranav', [21, 23, 25, 56, 56]]]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 1
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "# student marks\n",
+        "student_marks = [['Name', ['A','B','C','D','E']],\n",
+        "                ['Ankit',[41,34,45,55,63]],\n",
+        "                 ['Aravind',[42,23,34,44,53]],\n",
+        "                 ['Lakshay',[32,23,13,54,67]],\n",
+        "                 ['Gyan',[23,82,23,63,34]],\n",
+        "                 ['Pranav', [21,23,25,56,56]]\n",
+        "\n",
+        "                 ]\n",
+        "\n",
+        "student_marks"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "id": "fc660ea1",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "id": "fc660ea1",
+        "outputId": "7594246b-ceb3-4b59-d71b-69fd4d2665fe"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'Aravind'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 2
+        }
+      ],
+      "source": [
+        "student_marks[2][0]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "id": "4e0a0153",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4e0a0153",
+        "outputId": "507ef15c-09fa-49fb-ca92-f7a57bda3bb1"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ankit 34\n",
+            "Aravind 23\n",
+            "Lakshay 23\n",
+            "Gyan 82\n",
+            "Pranav 23\n"
+          ]
+        }
+      ],
+      "source": [
+        "#Trying to seperate Students and Marks in B\n",
+        "students_with_marks_in_B = []\n",
+        "\n",
+        "for student in student_marks[1:]:\n",
+        "    name=student[0]\n",
+        "    marks_in_B=student[1][1]\n",
+        "\n",
+        "    students_with_marks_in_B.append([marks_in_B,name])\n",
+        "    print(name, marks_in_B)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "id": "fc6c80d2",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "fc6c80d2",
+        "outputId": "466f30ab-80ea-4587-b76c-e367a591c0fb"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[[34, 'Ankit'], [23, 'Aravind'], [23, 'Lakshay'], [82, 'Gyan'], [23, 'Pranav']]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 4
+        }
+      ],
+      "source": [
+        "students_with_marks_in_B"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "id": "00215175",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "id": "00215175",
+        "outputId": "b76fafc2-eff8-481b-c330-342bb2c3275c"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'Gyan'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 5
+        }
+      ],
+      "source": [
+        "#answer for Q1: Who scored the highest mark in subject B\n",
+        "sorted(students_with_marks_in_B, reverse=True)[0][1]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 6,
+      "id": "8ac168d4",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8ac168d4",
+        "outputId": "5fad23a9-2b31-4dec-e110-1ebd42e5369e"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ankit 45\n",
+            "Aravind 34\n",
+            "Lakshay 13\n",
+            "Gyan 23\n",
+            "Pranav 25\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Seperating students marks in C\n",
+        "\n",
+        "students_with_marks_in_C = []\n",
+        "\n",
+        "for student in student_marks[1:]:\n",
+        "    name=student[0]\n",
+        "    marks_in_C=student[1][2]\n",
+        "\n",
+        "    students_with_marks_in_C.append([marks_in_C])\n",
+        "    print(name, marks_in_C)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "id": "1531a5b2",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1531a5b2",
+        "outputId": "9e233966-e48b-44ea-a8a9-561d91583673"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[[45], [34], [13], [23], [25]]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 7
+        }
+      ],
+      "source": [
+        "#extracting students with marks in C\n",
+        "students_with_marks_in_C\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 8,
+      "id": "26688b51",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "26688b51",
+        "outputId": "f80509e0-0d66-4624-bb79-f134fddccd41"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "45\n",
+            "34\n",
+            "13\n",
+            "23\n",
+            "25\n"
+          ]
+        }
+      ],
+      "source": [
+        "#extracting students with marks in C into a seperate list\n",
+        "\n",
+        "list_of_c = []\n",
+        "\n",
+        "for total_of_c in students_with_marks_in_C:\n",
+        "    figure =total_of_c[0]\n",
+        "\n",
+        "    list_of_c.append(figure)\n",
+        "    print(figure)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 9,
+      "id": "b5db4241",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "b5db4241",
+        "outputId": "41f12bb4-b3cb-42be-d159-9c958b7aa6ce"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[45, 34, 13, 23, 25]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 9
+        }
+      ],
+      "source": [
+        "list_of_c"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 10,
+      "id": "f0c5f88a",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "f0c5f88a",
+        "outputId": "02472508-a139-4bf1-b94b-05fde903615f"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "28.0\n"
+          ]
+        }
+      ],
+      "source": [
+        "#answer for Q2: What is the average marks scored in the subject C\n",
+        "print(np.mean(list_of_c))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 11,
+      "id": "23345680",
+      "metadata": {
+        "scrolled": true,
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "23345680",
+        "outputId": "204555b0-75a0-4173-b34b-b8924da973c6"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ankit 47.599999999999994\n",
+            "Aravind 39.2\n",
+            "Lakshay 37.8\n",
+            "Gyan 45.0\n",
+            "Pranav 36.199999999999996\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Adding all the marks for each individual students\n",
+        "highestpercentage_byname = []\n",
+        "for student in student_marks [1:]:\n",
+        "    name= student[0]\n",
+        "    Highestpercentage=sum(student[1])/500*100\n",
+        "\n",
+        "    highestpercentage_byname.append([Highestpercentage,name])\n",
+        "    print(name,Highestpercentage)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 12,
+      "id": "c08de53b",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "id": "c08de53b",
+        "outputId": "2b318018-a4ee-436c-a534-d276f5f17f16"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'Ankit'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 12
+        }
+      ],
+      "source": [
+        "#answer for Q3: Who scored the highest percentage of marks\n",
+        "sorted(highestpercentage_byname, reverse= True)[0][1]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 13,
+      "id": "938cb5c4",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "938cb5c4",
+        "outputId": "7d87ae05-83a9-4423-922c-be7a54580e2c"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ankit 51.0\n",
+            "Aravind 43.25\n",
+            "Lakshay 44.0\n",
+            "Gyan 50.5\n",
+            "Pranav 40.0\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Deleting the lowest mark for each candidate and assinging seperate variables\n",
+        "first_4_marks_of_student = []\n",
+        "highestpercentage_top4=[]\n",
+        "for student in student_marks [1:]:\n",
+        "    name = student[0]\n",
+        "    first_4_marks = sorted(student[1], reverse=True)\n",
+        "    del(first_4_marks[-1])\n",
+        "    first4=sum(first_4_marks)\n",
+        "    first4avg = first4 / 400*100\n",
+        "\n",
+        "    highestpercentage_top4.append([first4avg,name])\n",
+        "\n",
+        "\n",
+        "    print(name,first4avg)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 14,
+      "id": "decd2e46",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "id": "decd2e46",
+        "outputId": "95577966-7608-46bb-8151-a1ee8bedd5ac"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'Ankit'"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "string"
+            }
+          },
+          "metadata": {},
+          "execution_count": 14
+        }
+      ],
+      "source": [
+        "# answer for Q4: if considered only top-4 subjects of a candidate, then who scored the highest percentage of marks\n",
+        "\n",
+        "highestpercentage_top4\n",
+        "sorted(highestpercentage_top4,reverse=True)[0][1]"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8.8"
+    },
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
